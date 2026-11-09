@@ -71,11 +71,11 @@ document.getElementById("pakketlijst").innerHTML = pakketten.map((p) => `
 document.getElementById("tabel-rijen").innerHTML = pakketten.map((p) => `
   <tr>
     <th scope="row">${p.naam}</th>
-    <td class="getal">${p.uren === null ? nee : p.uren}</td>
-    <td>${p.examen ? ja : nee}</td>
-    <td>${p.alleen ? ja + " met bekwaamheidsattest" : nee}</td>
-    <td>${p.voorWie}</td>
-    <td><a href="${whatsappLink(p)}" class="vraag vraag--klein" target="_blank" rel="noopener">Kies</a></td>
+    <td class="getal" data-label="Uren rijles">${p.uren === null ? nee : p.uren}</td>
+    <td data-label="Lesauto en instructeur op je examen">${p.examen ? ja : nee}</td>
+    <td data-label="Daarna zonder begeleider rijden">${p.alleen ? `<span class="met">${ja} met bekwaamheidsattest</span>` : nee}</td>
+    <td class="voorwie" data-label="Past bij jou als je">${p.voorWie}</td>
+    <td class="kies"><a href="${whatsappLink(p)}" class="vraag vraag--klein" target="_blank" rel="noopener">Kies</a></td>
   </tr>`).join("");
 
 
@@ -153,4 +153,3 @@ groot.addEventListener("click", (e) => {
   if (e.target !== grootImg) groot.close();
 });
 
-document.getElementById("jaar").textContent = new Date().getFullYear();

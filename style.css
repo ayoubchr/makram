@@ -174,7 +174,7 @@ h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
 }
 .tabel tbody th { font-weight: 800; white-space: nowrap; }
 .tabel tbody tr:hover { background: #f8fafc; }
-.tabel td:last-child { color: var(--grijs); font-size: 0.95rem; }
+.tabel .voorwie { color: var(--grijs); font-size: 0.95rem; }
 .tabel .getal { font-weight: 900; font-size: 1.3rem; }
 .tabel tbody th, .tabel thead th:first-child {
   position: sticky; left: 0; background: var(--wit);
@@ -186,7 +186,6 @@ h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
   font-size: 0.8rem; margin-right: 4px;
 }
 .nee { color: #a3abb6; font-weight: 700; }
-.veeg { display: none; margin-bottom: 10px; font-size: 0.9rem; color: var(--grijs); }
 
 .vraag--klein { font-size: 0.85rem; padding: 0.4em 0.9em 0.25em; }
 .verborgen { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
@@ -199,7 +198,6 @@ h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
 .contact__info { display: grid; justify-items: start; gap: 20px; }
 .telefoon { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; text-decoration: none; letter-spacing: -0.01em; line-height: 1; }
 
-.voet { padding: 28px 0; color: var(--grijs); font-size: 0.9rem; }
 
 /* Zwevende WhatsApp-knop */
 .whatsapp {
@@ -233,14 +231,45 @@ h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
   .intro__inner, .pakketten__inner, .contact__inner { grid-template-columns: 1fr; gap: 36px; }
   .top__nav a:not(.knop) { display: none; }
   .geslaagd, .pakketten, .vergelijk, .contact { padding: 64px 0; }
-  .tabel tr > :nth-child(6) { width: 80px; }
-  .tabel { width: max-content; min-width: 0; table-layout: fixed; }
-  .tabel tr > :nth-child(1) { width: 118px; white-space: normal; box-shadow: 1px 0 0 var(--lijn); }
-  .tabel tr > :nth-child(2) { width: 72px; }
-  .tabel tr > :nth-child(3), .tabel tr > :nth-child(4) { width: 130px; }
-  .tabel tr > :nth-child(5) { width: 200px; }
-  .tabel th, .tabel td { padding: 14px 12px 12px; }
-  .veeg { display: block; }
+
+  /* Tabel wordt een blok per pakket */
+  .tabel-scroll { overflow: visible; background: none; border: 0; border-radius: 0; }
+  .tabel, .tabel tbody, .tabel tr, .tabel th, .tabel td { display: block; width: auto; min-width: 0; }
+  .tabel thead { display: none; }
+  .tabel tbody { display: grid; gap: 14px; }
+  .tabel tbody tr {
+    background: var(--wit);
+    border: 1px solid var(--lijn);
+    border-radius: 12px;
+    padding: 4px 16px 16px;
+  }
+  .tabel tbody tr:hover { background: var(--wit); }
+  .tabel tbody th {
+    position: static;
+    white-space: normal;
+    font-size: 1.15rem;
+    padding: 14px 0 10px;
+    border-bottom: 2px solid var(--inkt);
+  }
+  .tabel td {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding: 10px 0 8px;
+    border-bottom: 1px solid var(--lijn);
+    text-align: right;
+  }
+  .tabel td::before {
+    content: attr(data-label);
+    color: var(--grijs);
+    font-size: 0.9rem; font-weight: 400;
+    text-align: left;
+  }
+  .tabel .getal { font-size: 1.15rem; }
+  .tabel .met { max-width: 55%; }
+  .tabel .voorwie { display: block; text-align: left; color: var(--inkt); border-bottom: 0; }
+  .tabel .voorwie::before { display: block; margin-bottom: 2px; }
+  .tabel .kies { border-bottom: 0; padding: 6px 0 0; }
+  .tabel .kies::before { content: none; }
+  .tabel .kies .vraag { display: block; width: 100%; text-align: center; font-size: 0.95rem; padding: 0.6em 1em 0.45em; }
   .pakketlijst li { flex-direction: column; align-items: flex-start; gap: 12px; }
   .pakketten .kop { margin-bottom: 0; }
   .muur { grid-template-columns: repeat(2, 1fr); gap: 22px 12px; }
