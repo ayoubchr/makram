@@ -17,43 +17,40 @@ const geslaagden = [
 
 // ============================================================
 //  LESPAKKETTEN
-//  Eén lijst voor de pakketlijst, de vergelijkingstabel én de kaarten.
+//  Eén lijst voor de pakketlijst én de vergelijkingstabel.
 //  uren: aantal uren rijles (null = geen rijles, zoals bij theorie)
 //  examen: true = lesauto en instructeur op je examen
 //  alleen: true = daarna zonder begeleider rijden
-//  wagen: true = klant kiest manueel of automaat
 // ============================================================
 const whatsappNummer = "31645322903";
 
 const pakketten = [
-  { naam: "2 uur rijles", uren: 2, examen: false, alleen: false, wagen: true,
+  { naam: "2 uur rijles", uren: 2, examen: false, alleen: false,
     uitleg: "Om kennis te maken, of om één onderdeel extra te oefenen.",
     voorWie: "wil kennismaken of één onderdeel wil oefenen" },
-  { naam: "6 uur rijles", uren: 6, examen: false, alleen: false, wagen: true,
+  { naam: "6 uur rijles", uren: 6, examen: false, alleen: false,
     uitleg: "Verplicht als je 2 keer niet geslaagd bent voor het praktijkexamen. Ook handig om bij te schaven naast begeleid rijden.",
     voorWie: "2 keer gezakt bent, of wil bijschaven naast begeleid rijden" },
-  { naam: "10 uur rijles", uren: 10, examen: false, alleen: false, wagen: true,
+  { naam: "10 uur rijles", uren: 10, examen: false, alleen: false,
     uitleg: "Voor wie al met een begeleider rijdt en gericht wil bijleren.",
     voorWie: "al met een begeleider rijdt en gericht wil bijleren" },
-  { naam: "20 uur rijles", uren: 20, examen: false, alleen: true, wagen: true,
+  { naam: "20 uur rijles", uren: 20, examen: false, alleen: true,
     uitleg: "Vanaf 18 jaar. Na 20 uur les krijg je het bekwaamheidsattest, waarmee je met een voorlopig rijbewijs zonder begeleider mag rijden.",
     voorWie: "18 bent en zonder begeleider wil oefenen" },
-  { naam: "Examenbegeleiding", uren: 0, examen: true, alleen: false, wagen: true,
+  { naam: "Examenbegeleiding", uren: 0, examen: true, alleen: false,
     uitleg: "Je doet je praktijkexamen met onze lesauto en de instructeur gaat mee naar het examencentrum.",
     voorWie: "klaar bent voor je examen en geen eigen auto hebt" },
-  { naam: "2 uur rijles + examenbegeleiding", uren: 2, examen: true, alleen: false, wagen: true,
+  { naam: "2 uur rijles + examenbegeleiding", uren: 2, examen: true, alleen: false,
     uitleg: "Twee uur les vlak voor je examen om alles op te frissen. Daarna meteen naar het examen, met onze lesauto en instructeur.",
     voorWie: "vlak voor je examen nog wil opfrissen" },
-  { naam: "Theorie", uren: null, examen: false, alleen: false, wagen: false,
+  { naam: "Theorie", uren: null, examen: false, alleen: false,
     uitleg: "Voorbereiding op het theorie-examen, zodat je goed weet wat je kan verwachten.",
     voorWie: "je klaarmaakt voor het theorie-examen" },
 ];
 
-// WhatsApp-link met het gekozen pakket (en eventueel de wagen) al ingevuld
-function whatsappLink(pakket, wagen) {
-  let tekst = `Hoi, ik heb interesse in het pakket "${pakket.naam}"`;
-  if (wagen) tekst += ` in een ${wagen} wagen`;
-  tekst += ". Kan je me meer info geven?";
+// WhatsApp-link met het gekozen pakket al ingevuld
+function whatsappLink(pakket) {
+  const tekst = `Hoi, ik heb interesse in het pakket "${pakket.naam}". Kan je me meer info geven?`;
   return `https://wa.me/${whatsappNummer}?text=${encodeURIComponent(tekst)}`;
 }
 
@@ -81,38 +78,6 @@ document.getElementById("tabel-rijen").innerHTML = pakketten.map((p) => `
     <td><a href="${whatsappLink(p)}" class="vraag vraag--klein" target="_blank" rel="noopener">Kies</a></td>
   </tr>`).join("");
 
-// Kaarten, met keuze manueel of automaat
-const kaartenrij = document.getElementById("kaartenrij");
-pakketten.forEach((p, i) => {
-  const kaart = document.createElement("article");
-  kaart.className = "kaart";
-  const bord = p.uren === null ? "T" : p.uren === 0 ? "E" : p.uren;
-  const bordLabel = p.uren === null ? "theorie" : p.uren === 0 ? "examen" : "uur";
-  kaart.innerHTML = `
-    <div class="bord" aria-hidden="true"><b>${bord}</b><small>${bordLabel}</small></div>
-    <h3>${p.naam}</h3>
-    <p class="kaart__uitleg">${p.uitleg}</p>
-    <ul class="kaart__punten">
-      <li>${p.examen ? ja : nee} Lesauto en instructeur op je examen</li>
-      <li>${p.alleen ? ja : nee} Daarna zonder begeleider rijden</li>
-    </ul>
-    ${p.wagen ? `
-    <fieldset class="keuze">
-      <legend>Welke wagen?</legend>
-      <label><input type="radio" name="wagen-${i}" value="manuele" checked><span>Manueel</span></label>
-      <label><input type="radio" name="wagen-${i}" value="automatische"><span>Automaat</span></label>
-    </fieldset>` : ""}
-    <a class="knop kaart__knop" target="_blank" rel="noopener">Kies dit pakket</a>`;
-
-  const knop = kaart.querySelector(".kaart__knop");
-  const zetLink = () => {
-    const gekozen = kaart.querySelector("input:checked");
-    knop.href = whatsappLink(p, gekozen ? gekozen.value : null);
-  };
-  kaart.querySelectorAll("input").forEach((input) => input.addEventListener("change", zetLink));
-  zetLink();
-  kaartenrij.appendChild(kaart);
-});
 
 const stuur = `
   <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
