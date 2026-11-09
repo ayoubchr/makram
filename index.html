@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rijschool Makram | Rijles met geduld</title>
+  <meta name="description" content="Rijschool Makram: rustige, duidelijke rijlessen. Bekijk de foto's van onze geslaagde leerlingen en plan je rijles.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+  <header class="top">
+    <div class="wrap top__inner">
+      <a href="#" class="logo">Rijschool Makram</a>
+      <nav class="top__nav">
+        <a href="#geslaagd">Geslaagd</a>
+        <a href="#pakketten">Lespakketten</a>
+        <a href="#contact" class="knop knop--klein">Les plannen</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="wrap intro__inner">
+        <div class="intro__tekst">
+          <h1>Rustig leren rijden. En gewoon slagen.</h1>
+          <p>Eén vaste instructeur, lessen die bij je tempo passen en eerlijk advies over wanneer je klaar bent voor je examen.</p>
+          <div class="intro__knoppen">
+            <a href="#contact" class="knop">Les plannen</a>
+            <a href="#geslaagd" class="link">Bekijk wie je voorging</a>
+          </div>
+        </div>
+        <figure class="laatste" id="laatste"></figure>
+      </div>
+    </section>
+
+    <div class="haaientanden" aria-hidden="true"></div>
+
+    <section class="geslaagd" id="geslaagd">
+      <div class="wrap">
+        <div class="kop">
+          <h2>Geslaagd bij ons</h2>
+          <p>Elke foto is een leerling die met een rijbewijs naar huis ging. Klik op een foto om hem groot te zien.</p>
+        </div>
+        <div class="muur" id="muur"></div>
+      </div>
+    </section>
+
+    <section class="pakketten" id="pakketten">
+      <div class="wrap pakketten__inner">
+        <div class="kop">
+          <h2>Lespakketten</h2>
+          <p>Leer je met een begeleider of alleen via de rijschool? Wij helpen je op beide manieren, tot aan je praktijkexamen.</p>
+          <p class="wagens"><span>Manueel</span><span>Automaat</span> Alle rijlessen kan je in een manuele of automatische wagen volgen.</p>
+        </div>
+        <ul class="pakketlijst" id="pakketlijst"></ul>
+      </div>
+    </section>
+
+    <section class="vergelijk" id="vergelijk">
+      <div class="wrap">
+        <div class="kop">
+          <h2>Pakketten vergelijken</h2>
+          <p>Zet de pakketten naast elkaar en kies wat bij jou past. Elke rijles kan in een manuele of automatische wagen.</p>
+        </div>
+        <p class="veeg">Veeg de tabel opzij om alles te zien.</p>
+        <div class="tabel-scroll">
+          <table class="tabel">
+            <thead>
+              <tr>
+                <th scope="col">Pakket</th>
+                <th scope="col">Uren rijles</th>
+                <th scope="col">Lesauto en instructeur op je examen</th>
+                <th scope="col">Daarna zonder begeleider rijden</th>
+                <th scope="col">Past bij jou als je</th>
+                <th scope="col"><span class="verborgen">Contact</span></th>
+              </tr>
+            </thead>
+            <tbody id="tabel-rijen"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="kaarten" id="kaarten">
+      <div class="wrap">
+        <div class="kop">
+          <h2>Kies je pakket</h2>
+          <p>Kies een pakket en je wagen. Je WhatsApp-bericht staat dan al klaar, je hoeft het alleen nog te versturen.</p>
+        </div>
+        <div class="kaartenrij" id="kaartenrij"></div>
+      </div>
+    </section>
+
+    <div class="haaientanden" aria-hidden="true"></div>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact__inner">
+        <div>
+          <h2>Les plannen</h2>
+          <p>Bel of app gerust. Je krijgt meestal binnen een dag antwoord.</p>
+        </div>
+        <div class="contact__info">
+          <a href="tel:+31645322903" class="telefoon">+31 6 45 32 29 03</a>
+          <a href="https://wa.me/31645322903" class="knop knop--wit">App via WhatsApp</a>
+          <p>
+            <a href="mailto:info@rijschoolmakram.be">info@rijschoolmakram.be</a><br>
+            Voorbeeldstraat 1, 1000 Plaats
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="voet">
+    <div class="wrap">© <span id="jaar"></span> Rijschool Makram</div>
+  </footer>
+
+  <a href="https://wa.me/31645322903" class="whatsapp" target="_blank" rel="noopener" aria-label="Stuur een bericht via WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 6.9L3 29l6.5-2c1.9 1 4.1 1.6 6.5 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.8-1.7l-.4-.3-3.9 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.9-3.9-1.9-6 0-5.9 4.9-10.6 11-10.6s11 4.8 11 10.6-4.9 10.9-10.9 10.9zm6-7.9c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1.1-2.5c-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.7 5.8 5.1 2.9 1.1 3.4.9 4 .8.6-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+
+  <dialog class="groot" id="groot">
+    <button class="groot__sluit" aria-label="Sluiten">×</button>
+    <img id="groot-img" alt="">
+    <p id="groot-tekst"></p>
+  </dialog>
+
+  <script src="script.js?v=2"></script>
+</body>
+</html>
